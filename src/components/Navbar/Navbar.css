@@ -16,10 +16,6 @@
 
 .chatbot__navbar-links_header {
     margin-right: 2rem;
-    display: flex;
-}
-
-.chatbot__navbar-links_logo h1 {
     color: #fff;
     font-family: var(--font-family);
 }
