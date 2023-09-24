@@ -6,17 +6,37 @@ import './Navbar.css'
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
+  const [selectedLink, setSelectedLink] = useState('');
+
+  const handleLinkClick = (link: string) => {
+    setSelectedLink(link);
+  };
+
+  const resetSelectedLink = () => {
+    setSelectedLink('');
+  };
 
   return (
     <div className="chatbot__navbar">
       <div className="chatbot__navbar-links">
         <div className="chatbot__navbar-links_header">
-          <h1><Link to={'/'}>Chatbot</Link></h1>
+          <h1 onClick={resetSelectedLink}>
+            <Link to={'/'}>Chatbot</Link>
+          </h1>
         </div>
         <div className="chatbot__navbar-links_container">
-          <p><Link to={'/openai'}>Open AI</Link></p>
-          <p><Link to={'/features'}>Features</Link></p>
-          <p><Link to={'/blog'}>About Us</Link></p>
+          <p className={selectedLink === 'features' ? 'selected' : ''} onClick={() => handleLinkClick('features')}>
+            <Link to={'/features'}>Features</Link>
+          </p>
+          <p className={selectedLink === 'openai' ? 'selected' : ''} onClick={() => handleLinkClick('openai')}>
+            <Link to={'/openai'}>Open AI</Link>
+          </p>
+          <p className={selectedLink === 'blog' ? 'selected' : ''} onClick={() => handleLinkClick('blog')}>
+            <Link to={'/blog'}>About Us</Link>
+          </p>
+          <p className={selectedLink === 'contact' ? 'selected' : ''} onClick={() => handleLinkClick('contact')}>
+            <Link to={'/contact'}>Contact</Link>
+          </p>
         </div>
       </div>
       <div className="chatbot__navbar-sign">
@@ -28,17 +48,18 @@ const Navbar = () => {
           ? <RiCloseLine color="#fff" size={27} onClick={() => setToggleMenu(false)} />
           : <RiMenu3Line color="#fff" size={27} onClick={() => setToggleMenu(true)} />}
         {toggleMenu && (
-        <div className="chatbot__navbar-menu_container scale-up-center">
-          <div className="chatbot__navbar-menu_container-links">
-          <p><Link to={'/openai'}>Open AI</Link></p>
-          <p><Link to={'/features'}>Features</Link></p>
-          <p><Link to={'/blog'}>About Us</Link></p>
+          <div className="chatbot__navbar-menu_container scale-up-center">
+            <div className="chatbot__navbar-menu_container-links">
+              <p><Link to={'/openai'}>Open AI</Link></p>
+              <p><Link to={'/features'}>Features</Link></p>
+              <p><Link to={'/blog'}>About Us</Link></p>
+              <p><Link to={'/contact'}>Contact</Link></p>
+            </div>
           </div>
-        </div>
         )}
       </div>
     </div>
   )
 }
 
-export default Navbar
+export default Navbar;
