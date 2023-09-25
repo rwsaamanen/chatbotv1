@@ -9,6 +9,8 @@ import './index.css';
 import Root from './routes/root';
 import ErrorPage from "./errorHandling/ErrorPage";
 import { Chatbot, OpenAi, Features, Blog, Contact } from './containers';
+import { LogIn, SignUp, Help } from './components';
+import { CustomizedResponses, BoostProductivity, Interact } from './containers/features/subcomponents';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +29,20 @@ const router = createBrowserRouter([
       {
         path: "features",
         element: <Features />,
+        children: [
+          {
+            path: "customized-responses",
+            element: <CustomizedResponses />,
+          },
+          {
+            path: "boost-productivity",
+            element: <BoostProductivity />,
+          },
+          {
+            path: "interact",
+            element: <Interact />,
+          },
+        ],
       },
       {
         path: "blog",
@@ -35,6 +51,18 @@ const router = createBrowserRouter([
       {
         path: "contact",
         element: <Contact />,
+      },
+      {
+        path: "login",
+        element: <LogIn />,
+      },
+      {
+        path: "signup",
+        element: <SignUp />,
+      },
+      {
+        path: "help",
+        element: <Help />,
       }
     ],
   },
