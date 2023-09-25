@@ -10,7 +10,7 @@
     bottom: 0;
     right: 0;
     left: 0;
-    padding: 20px;
+    padding: 2%;
 }
 
 .Contact__header {
@@ -23,8 +23,11 @@
     display: flex;
     justify-content: space-around;
     width: 80%;
-    margin-top: 20px;
-    height: 25%;
+    margin-top: 2%;
+    height: auto;
+    flex-wrap: nowrap;
+    max-width: 100%;
+    flex-direction: row; /* Added */
 }
 
 .Contact__box {
@@ -34,11 +37,16 @@
     border-radius: 15px;
     width: 45%;
     box-shadow: 0cqh 1px 1px rgba(45, 45, 45, 0.5);
-    margin: 0 1rem;
+    margin: 1%;
+    box-sizing: border-box;
+    /* Remove the following CSS */
+    /* flex-grow: 1; */
+    max-height: 200px; /* Added */
 }
 
 .Contact__box h2 {
     margin-bottom: 10px;
+    color: #fff;
 }
 
 .Contact__box p {
@@ -54,9 +62,24 @@
     cursor: pointer;
     text-transform: uppercase;
     font-weight: bold;
-    margin-top: 60px;
+    margin-top: 2%;
 }
 
 .Contact__button:hover {
     background-color: #e1e1e1; /* or any color you prefer for hover effect */
+}
+
+@media (max-width: 768px) {
+    .Contact__boxContainer {
+        flex-direction: column; /* Stack boxes vertically on smaller screens */
+    }
+
+    .Contact__box {
+        width: 100%; /* Set box width to 100% on smaller screens */
+        max-height: none; /* Remove max-height restriction on smaller screens */
+    }
+
+    .Contact__button {
+        margin-top: 5%; /* Increase margin-top for buttons on smaller screens */
+    }
 }

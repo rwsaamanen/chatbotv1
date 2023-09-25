@@ -40,8 +40,12 @@ const Navbar = () => {
         </div>
       </div>
       <div className="chatbot__navbar-sign">
-        <button type='button' className='chatbot__navbar-sign-in'>Sign in</button>
-        <button type='button' className='chatbot__navbar-sign-up'>Sign up</button>
+        <Link to={'/login'}>
+          <button type='button' className='chatbot__navbar-sign-in'>Log in</button>
+        </Link>
+        <Link to={'/signup'}>
+          <button type='button' className='chatbot__navbar-sign-up'>Sign up</button>
+        </Link>
       </div>
       <div className="chatbot__navbar-menu">
         {toggleMenu
