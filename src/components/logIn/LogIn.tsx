@@ -1,13 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 import Github from "../../assets/github.png"
 import Google from "../../assets/google.png"
 import Facebook from "../../assets/facebook.png"
 
-import { Link } from 'react-router-dom';
 import './LogIn.css'
 
 const LogIn = () => {
+
   return (
     <div className='LogIn'>
       <div className='LogIn__center-container'>
