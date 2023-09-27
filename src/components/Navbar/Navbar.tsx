@@ -4,7 +4,11 @@ import { Link } from 'react-router-dom';
 
 import './Navbar.css'
 
-const Navbar = () => {
+interface NavbarProps {
+  isUserLoggedIn: boolean;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ isUserLoggedIn }) => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [selectedLink, setSelectedLink] = useState('');
 
@@ -40,12 +44,20 @@ const Navbar = () => {
         </div>
       </div>
       <div className="chatbot__navbar-sign">
-        <Link to={'/login'}>
-          <button type='button' className='chatbot__navbar-sign-in'>Log in</button>
-        </Link>
-        <Link to={'/signup'}>
-          <button type='button' className='chatbot__navbar-sign-up'>Sign up</button>
-        </Link>
+        {!isUserLoggedIn ? (
+          <>
+            <Link to={'/login'}>
+              <button type='button' className='chatbot__navbar-sign-in'>Log in</button>
+            </Link>
+            <Link to={'/signup'}>
+              <button type='button' className='chatbot__navbar-sign-up'>Sign up</button>
+            </Link>
+          </>
+        ) : (
+          <Link to={'/'}>
+          <button type='button' className='chatbot__navbar-sign-out'>Log out</button>
+          </Link>
+        )}
       </div>
       <div className="chatbot__navbar-menu">
         {toggleMenu
